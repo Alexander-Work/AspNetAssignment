@@ -1,5 +1,5 @@
 # AspNetAssignment
 
-GameConnect Assignment part 1
+GameConnect Assignment part 3
 
-https://gameconnectgcollege.azurewebsites.net/
+http://alexanderwork-001-site1.etempurl.com/

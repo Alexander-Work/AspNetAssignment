@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GameConnect.Data;
 using GameConnect.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GameConnect.Controllers
 {
@@ -46,6 +47,7 @@ namespace GameConnect.Controllers
         }
 
         // GET: Games/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +58,7 @@ namespace GameConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("GameId,Name,Description,Image")] Game game)
         {
             if (ModelState.IsValid)
@@ -68,6 +71,7 @@ namespace GameConnect.Controllers
         }
 
         // GET: Games/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Game == null)
@@ -88,6 +92,7 @@ namespace GameConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("GameId,Name,Description,Image")] Game game)
         {
             if (id != game.GameId)
@@ -119,6 +124,7 @@ namespace GameConnect.Controllers
         }
 
         // GET: Games/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Game == null)
@@ -139,6 +145,7 @@ namespace GameConnect.Controllers
         // POST: Games/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Game == null)
